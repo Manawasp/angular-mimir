@@ -2,12 +2,12 @@
 (function () {
 	'use strict';
 
-	function RobinInitValidation(auto, path) {
+	function MimirInitValidation(auto, path) {
 		if (auto === undefined) {
 			auto = true;
 		}
 		if (path === undefined) {
-			throw new Error('Please define path to RobinProvider.');
+			throw new Error('Please define path to MimirProvider.');
 		}
 		if (path.length === 0 || path[path.length -1] !== '/') {
 			path += '/';
@@ -16,14 +16,14 @@
 	}
 
 
-	function Robin($rootScope, auto, path) {
+	function Mimir($rootScope, auto, path) {
 		var $ctrl = this;
-		$ctrl.params = RobinInitValidation(auto, path);
+		$ctrl.params = MimirInitValidation(auto, path);
 
 		var src = function(lang, file, ext) {
-			return $ctrl.params.path + "robin." + lang + "." + ext;
+			return $ctrl.params.path + "mimir." + lang + "." + ext;
 		}
-    // auto := true - load Robin from the distant URL
+    // auto := true - load Mimir from the distant URL
     // auto := false - the user loaded by himself in index.html
     if ($ctrl.params.auto) {
 			var defaultLang = "en"
@@ -37,13 +37,13 @@
 			var r = new XMLHttpRequest();
 			r.open('GET', src(params.lang, "html"));
 			r.onreadystatechange = function() {
-				window.updateRobin(r.responseText)
+				window.updateMimir(r.responseText)
 			}
 			r.send();
 		});
 	}
 
-	angular.module('app').provider('robin', function RobinProvider() {
+	angular.module('app').provider('mimir', function MimirProvider() {
 	  var auto = true;
 
 		this.setAuto = function(value) {
@@ -54,8 +54,8 @@
 			path = value;
 		};
 
-	  this.$get = [function robinFactory(auto, path) {
-		  return new Robin($rootScope, auto, path);
+	  this.$get = [function mimirFactory(auto, path) {
+		  return new Mimir($rootScope, auto, path);
 		}];
 	});
 })();
