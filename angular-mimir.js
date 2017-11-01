@@ -66,8 +66,20 @@
 			config.auto = value;
 		};
 
-		this.setPath = function(value) {
+		this.setPath = function(value, defaultAPI) {
 			config.path = value;
+
+			if (defaultAPI === undefined || defaultAPI) {
+				if (value.length === 0 || value[value.length -1] !== '/') {
+					value += '/';
+				}
+				value += 'api';
+				this.apiURL(value);
+			}
+		};
+
+		this.apiURL = function(value) {
+			window.mimirPrefixURL = value;
 		};
 
 		this.setLang = function(value) {

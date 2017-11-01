@@ -1,0 +1,22 @@
+{
+  "name": "angular-mimir-feedback",
+  "main": "angular-mimir.js",
+  "homepage": "https://github.com/Manawasp/angular-mimir",
+  "authors": [
+    "Clovis Kyndt <clovis.kyndt@gmail.com>"
+  ],
+  "description": "Mimir manager for angular with angular-translate",
+  "keywords": [
+    "mimir",
+    "angular",
+    "feedback"
+  ],
+  "license": "Apache-2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
